@@ -1,6 +1,6 @@
 from flask import Flask
 from config import Config
-#from controllers.chat_controller import chat_bp
+from controllers.chat_controller import chat_bp
 from controllers.auth_controller import auth_bp
 from flask_jwt_extended import JWTManager
 
@@ -10,7 +10,7 @@ def create_app():
     app.config.from_object(Config)
     JWTManager(app)
     app.register_blueprint(auth_bp)
-#    app.register_blueprint(chat_bp)
+    app.register_blueprint(chat_bp)
 
 
     return app

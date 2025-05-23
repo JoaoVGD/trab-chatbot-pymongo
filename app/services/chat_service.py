@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 class ChatService:
     def __init__(self):
         self.repo = MongoChatRepository()
-    def perguntar(auth_id, pergunta):
+    def perguntar(self, auth_id, pergunta):
         ult_chats = self.repo.achar_ult_chat_pqtd(auth_id, 20)
 
         messages = [("system", "Você é um assistente amigável dos MEIs e seu nome é Meigo.")]
@@ -22,6 +22,6 @@ class ChatService:
         formatted_messages = prompt.format_messages()
         response = llm(formatted_messages)
 
-        salvar_prgeres(auth_id, pergunta, response.content)
+        self.repo.salvar_prgeres(auth_id, pergunta, response.content)
         return response.content
 

@@ -4,7 +4,7 @@ from datetime import datetime
 class MongoChatRepository:
     def __init__(self):
         self.collection = mongo_db['chats']
-    def achar_ult_chat_pqtd(auth_id, qtd):
+    def achar_ult_chat_pqtd(self, auth_id, qtd):
         # Achar ultimos chat pelo tamanho (PREDEFINIDO) (sempre par) e pelo id do auth
         if qtd == 0:
             return -1 
@@ -14,7 +14,7 @@ class MongoChatRepository:
         return results
 
 
-    def salvar_prgeres(auth_id, pergunta, resposta):
+    def salvar_prgeres(self, auth_id, pergunta, resposta):
         
         document = {
             "auth_id": auth_id,
